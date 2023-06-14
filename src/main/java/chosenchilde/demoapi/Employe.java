@@ -13,17 +13,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Treco {
+public class Employe {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false)
 	private Long id;
 
-	@Column(length = 63)
+	@Column(length = 127)
 	private String name;
 
-	@Column(length = 127)
-	private String description;
+	@Column(length = 255)
+	private String email;
+
+	@Column(length = 63)
+	private String password;
 
 }
