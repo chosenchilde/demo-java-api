@@ -1,4 +1,4 @@
-package chosenchilde.demoapi.control;
+package chosenchilde.demoapi.usuario;
 
 import java.util.List;
 
@@ -13,28 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import chosenchilde.demoapi.repository.EmployeRepository;
-import chosenchilde.model.Employe;
-
 @RestController
-@RequestMapping("/users")
-public class EmployeController {
+@RequestMapping("/usuarios")
+public class UsuarioController {
 
 	@Autowired
-	private EmployeRepository employRepository;
+	private UsuarioRepository repository;
 
 	@GetMapping
-	public List<Employe> getAll() {
-		return employRepository.findAll();
+	public List<Usuario> getAll() {
+		return repository.findAll();
 	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public String getOne(@PathVariable Long id) {
 
-		if (employRepository.existsById(id)) {
+		if (repository.existsById(id)) {
 			try {
 				ObjectMapper mapper = new ObjectMapper();
-				Employe employe = employRepository.findById(id).get();
+				Usuario employe = repository.findById(id).get();
 				return mapper.writeValueAsString(employe);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
@@ -45,8 +42,8 @@ public class EmployeController {
 	}
 
 	@PostMapping
-	public Employe post(@RequestBody Employe employe) {
-		return employRepository.save(employe);
+	public Usuario post(@RequestBody Usuario employe) {
+		return repository.save(employe);
 	}
 
 }

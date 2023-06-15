@@ -1,4 +1,4 @@
-package chosenchilde.model;
+package chosenchilde.demoapi.usuario;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Employe {
+public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,5 +28,5 @@ public class Employe {
 
 	@Column(length = 63)
 	private String password;
-
+	
 }
